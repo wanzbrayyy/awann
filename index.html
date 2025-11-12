@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awan Berlian - Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Gradient Background Animation */
+    .gradient-bg {
+      background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Fade In Up Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    /* Scale on Hover */
+    .hover-scale {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-scale:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    /* Glassmorphism Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Skill Bar Animation */
+    @keyframes fillBar {
+      from { width: 0%; }
+      to { width: var(--skill-width); }
+    }
+    
+    .skill-bar {
+      animation: fillBar 1.5s ease-out forwards;
+    }
+    
+    /* Pulse Animation for Icons */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    .pulse-hover:hover {
+      animation: pulse 0.6s ease-in-out;
+    }
+    
+    /* Navbar Scroll Effect */
+    .navbar-scrolled {
+      background: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    
+    body.dark-mode .navbar-scrolled {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(20px);
+    }
+    
+    /* Mobile Menu Light Mode */
+    .mobile-menu-light {
+      background: rgba(30, 41, 59, 0.95) !important;
+      backdrop-filter: blur(20px);
+    }
+    
+    body.dark-mode .mobile-menu-light {
+      background: rgba(15, 23, 42, 0.95) !important;
+    }
+    
+    .mobile-link {
+      color: white;
+    }
+    
+    body.dark-mode .mobile-link {
+      color: white;
+    }
+    
+    .mobile-link:hover {
+      color: #a78bfa !important;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #667eea, #764ba2);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #764ba2, #667eea);
+    }
+    
+    /* Glow Effect */
+    .glow {
+      box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+    }
+    
+    /* Typing Animation */
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode .gradient-bg {
+      background: linear-gradient(-45deg, #1e293b, #334155, #475569, #1e3a8a);
+    }
+    
+    body.dark-mode section:not(.gradient-bg) {
+      background: #1e293b !important;
+    }
+    
+    body.dark-mode .bg-gray-50 {
+      background: #0f172a !important;
+    }
+    
+    body.dark-mode .bg-white {
+      background: #1e293b !important;
+    }
+    
+    body.dark-mode .text-gray-800 {
+      color: #e2e8f0 !important;
+    }
+    
+    body.dark-mode .text-gray-700 {
+      color: #cbd5e1 !important;
+    }
+    
+    body.dark-mode .text-gray-600 {
+      color: #94a3b8 !important;
+    }
+    
+    body.dark-mode .text-gray-500 {
+      color: #64748b !important;
+    }
+    
+    body.dark-mode .shadow-lg,
+    body.dark-mode .shadow-xl,
+    body.dark-mode .shadow-2xl {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    body.dark-mode .bg-gradient-to-br {
+      opacity: 0.9;
+    }
+    
+    body.dark-mode footer {
+      background: #0f172a !important;
+    }
+    
+    /* Language Button Active State */
+    .lang-btn.active,
+    .lang-btn-mobile.active {
+      background: white;
+      color: #7c3aed;
+    }
+    
+    .lang-btn,
+    .lang-btn-mobile {
+      color: white;
+    }
+    
+    .lang-btn:hover,
+    .lang-btn-mobile:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Theme Toggle Animation */
+    #theme-toggle i,
+    #theme-toggle-mobile i {
+      transition: transform 0.5s ease;
+    }
+    
+    body.dark-mode #theme-toggle i,
+    body.dark-mode #theme-toggle-mobile i {
+      transform: rotate(360deg);
+    }
+    
+    /* Cinematic UI Effects */
+    .cinematic-glow {
+      box-shadow: 0 0 40px rgba(102, 126, 234, 0.3),
+                  0 0 80px rgba(118, 75, 162, 0.2),
+                  inset 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-mode .cinematic-glow {
+      box-shadow: 0 0 40px rgba(102, 126, 234, 0.5),
+                  0 0 80px rgba(118, 75, 162, 0.3),
+                  inset 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Chakra UI Inspired */
+    .chakra-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .chakra-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s ease;
+    }
+    
+    .chakra-card:hover::before {
+      left: 100%;
+    }
+    
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: auto;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    
+    body.dark-mode .modal-content {
+      background: #1e293b;
+    }
+    
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      background: rgba(0, 0, 0, 0.8);
+      transform: rotate(90deg);
+    }
+    
+    /* Particle Effect */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    @keyframes float-particle {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+      }
+    }
+    
+    /* Neon Glow Effect */
+    .neon-text {
+      text-shadow: 0 0 10px rgba(102, 126, 234, 0.8),
+                   0 0 20px rgba(102, 126, 234, 0.6),
+                   0 0 30px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* 3D Card Effect */
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+    }
+    
+    .card-3d:hover {
+      transform: rotateY(5deg) rotateX(5deg);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body><!-- Navigation -->
+  <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-slate-800 bg-opacity-95 backdrop-blur-lg shadow-lg">
+   <div class="container mx-auto px-6 flex justify-between items-center">
+    <div class="text-2xl font-bold text-white"><i class="fas fa-gem mr-2"></i>Awan Berlian
+    </div>
+    <div class="hidden md:flex space-x-8 items-center"><a href="#home" class="text-white hover:text-purple-300 transition-colors duration-300 font-medium"> <i class="fas fa-home mr-2"></i><span data-lang="nav-home">Home</span> </a> <a href="#about" class="text-white hover:text-purple-300 transition-colors duration-300 font-medium"> <i class="fas fa-user mr-2"></i><span data-lang="nav-about">About</span> </a> <a href="#skills" class="text-white hover:text-purple-300 transition-colors duration-300 font-medium"> <i class="fas fa-code mr-2"></i><span data-lang="nav-skills">Skills</span> </a> <a href="#projects" class="text-white hover:text-purple-300 transition-colors duration-300 font-medium"> <i class="fas fa-briefcase mr-2"></i><span data-lang="nav-projects">Projects</span> </a> <a href="#certificates" class="text-white hover:text-purple-300 transition-colors duration-300 font-medium"> <i class="fas fa-certificate mr-2"></i><span data-lang="nav-certificates">Certificates</span> </a> <a href="#contact" class="text-white hover:text-purple-300 transition-colors duration-300 font-medium"> <i class="fas fa-envelope mr-2"></i><span data-lang="nav-contact">Contact</span> </a> <!-- Language Switcher -->
+     <div class="flex items-center space-x-2 glass px-3 py-2 rounded-full"><button id="lang-id" class="lang-btn active px-3 py-1 rounded-full text-sm font-semibold transition-all duration-300"> 🇮🇩 ID </button> <button id="lang-en" class="lang-btn px-3 py-1 rounded-full text-sm font-semibold transition-all duration-300"> 🇬🇧 EN </button>
+     </div><!-- Dark Mode Toggle --> <button id="theme-toggle" class="glass p-2 rounded-full hover:scale-110 transition-all duration-300"> <i class="fas fa-moon text-white text-xl"></i> </button>
+    </div>
+    <div class="flex md:hidden items-center space-x-3"><!-- Language Switcher Mobile -->
+     <div class="flex items-center space-x-1 glass px-2 py-1 rounded-full"><button id="lang-id-mobile" class="lang-btn-mobile active px-2 py-1 rounded-full text-xs font-semibold transition-all duration-300"> 🇮🇩 </button> <button id="lang-en-mobile" class="lang-btn-mobile px-2 py-1 rounded-full text-xs font-semibold transition-all duration-300"> 🇬🇧 </button>
+     </div><!-- Dark Mode Toggle Mobile --> <button id="theme-toggle-mobile" class="glass p-2 rounded-full"> <i class="fas fa-moon text-white text-lg"></i> </button> <button id="mobile-menu-btn" class="text-white text-2xl"> <i class="fas fa-bars"></i> </button>
+    </div>
+   </div><!-- Mobile Menu -->
+   <div id="mobile-menu" class="hidden md:hidden bg-slate-800 bg-opacity-95 backdrop-blur-lg mt-4 mx-6 rounded-lg p-4 shadow-xl"><a href="#home" class="block text-white hover:text-purple-300 py-2 transition-colors duration-300" data-lang="nav-home"> <i class="fas fa-home mr-2"></i>beranda </a> <a href="#about" class="block text-white hover:text-purple-300 py-2 transition-colors duration-300" data-lang="nav-about"> <i class="fas fa-user mr-2"></i>tentang </a> <a href="#skills" class="block text-white hover:text-purple-300 py-2 transition-colors duration-300" data-lang="nav-skills"> <i class="fas fa-code mr-2"></i>keahlian </a> <a href="#projects" class="block text-white hover:text-purple-300 py-2 transition-colors duration-300" data-lang="nav-projects"> <i class="fas fa-briefcase mr-2"></i>proyek </a> <a href="#certificates" class="block text-white hover:text-purple-300 py-2 transition-colors duration-300" data-lang="nav-certificates"> <i class="fas fa-certificate mr-2"></i>sertifikat </a> <a href="#contact" class="block text-white hover:text-purple-300 py-2 transition-colors duration-300" data-lang="nav-contact"> <i class="fas fa-envelope mr-2"></i>kontak </a>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home" class="gradient-bg min-h-full flex items-center justify-center relative overflow-hidden">
+   <div class="container mx-auto px-6 py-32 text-center relative z-10">
+    <div class="float-animation mb-8">
+     <div class="w-48 h-48 mx-auto rounded-full overflow-hidden border-8 border-white shadow-2xl glow"><img src="https://files.catbox.moe/dum33s.jpg" alt="Awan Berlian Profile" class="w-full h-full object-cover" onerror="this.style.display='none'; this.alt='Image failed to load';">
+     </div>
+    </div>
+    <h1 id="hero-name" class="text-5xl md:text-7xl font-bold text-white mb-4 fade-in-up" data-lang="hero-name">awan berlian</h1>
+    <p id="hero-title" class="text-2xl md:text-3xl text-white mb-8 fade-in-up" style="animation-delay: 0.2s;" data-lang="hero-title">full stack developer &amp; ui/ux designer</p>
+    <div class="flex justify-center space-x-4 mb-12 fade-in-up" style="animation-delay: 0.4s;"><a href="#contact" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-purple-100 transition-all duration-300 shadow-lg pulse-hover"> <i class="fas fa-paper-plane mr-2"></i><span data-lang="hero-hire">hubungi saya</span> </a> <a href="#projects" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 shadow-lg pulse-hover"> <i class="fas fa-eye mr-2"></i><span data-lang="hero-view">lihat karya</span> </a>
+    </div>
+    <div class="flex justify-center space-x-6 fade-in-up" style="animation-delay: 0.6s;"><a href="#" class="text-white text-3xl hover:text-purple-300 transition-all duration-300 pulse-hover"> <i class="fab fa-github"></i> </a> <a href="https://github.com/wanzbrayy" class="text-white text-3xl hover:text-purple-300 transition-all duration-300 pulse-hover"> <i class="fab fa-linkedin"></i> </a> <a href="#" class="text-white text-3xl hover:text-purple-300 transition-all duration-300 pulse-hover"> <i class="fab fa-instagram"></i> </a> <a href="#" class="text-white text-3xl hover:text-purple-300 transition-all duration-300 pulse-hover"> <i class="fab fa-twitter"></i> </a>
+    </div>
+   </div><!-- Floating Shapes -->
+   <div class="absolute top-20 left-10 text-white text-6xl opacity-20 float-animation"><i class="fas fa-code"></i>
+   </div>
+   <div class="absolute bottom-20 right-10 text-white text-6xl opacity-20 float-animation" style="animation-delay: 1s;"><i class="fas fa-laptop-code"></i>
+   </div>
+  </section><!-- About Section -->
+  <section id="about" class="py-20 bg-gray-50">
+   <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800"><i class="fas fa-user-circle mr-3 text-purple-600"></i><span data-lang="about-title">tentang saya</span></h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-500 mx-auto mb-12"></div>
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12 hover-scale chakra-card cinematic-glow">
+     <p id="about-description" class="text-lg text-gray-700 leading-relaxed mb-6" data-lang="about-desc">saya adalah awan berlian, seorang developer yang passionate dalam menciptakan pengalaman digital dan marketing hingga analisis, dengan keahlian started up development dan desain ui/ux, saya berkomitmen untuk menghadirkan solusi inovatif yang tidak hanya fungsional tetapi juga estetis.</p>
+     <p class="text-lg text-gray-700 leading-relaxed mb-6" data-lang="about-desc2">pengalaman saya mencakup pengembangan aplikasi web modern, mobile apps, dan sistem yang kompleks. saya selalu bersemangat untuk belajar teknologi baru dan mengikuti tren terkini dalam industri teknologi dan cyber security.</p>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl chakra-card card-3d"><i class="fas fa-project-diagram text-4xl text-purple-600 mb-3"></i>
+       <h3 class="text-2xl font-bold text-gray-800">50+</h3>
+       <p class="text-gray-600" data-lang="about-projects">proyek selesai</p>
+      </div>
+      <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl chakra-card card-3d"><i class="fas fa-users text-4xl text-blue-600 mb-3"></i>
+       <h3 class="text-2xl font-bold text-gray-800">30+</h3>
+       <p class="text-gray-600" data-lang="about-clients">klien puas</p>
+      </div>
+      <div class="text-center p-6 bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl chakra-card card-3d"><i class="fas fa-award text-4xl text-pink-600 mb-3"></i>
+       <h3 class="text-2xl font-bold text-gray-800">2+</h3>
+       <p class="text-gray-600" data-lang="about-awards">sertifikat</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Tech Stack Section -->
+  <section id="skills" class="py-20 bg-white">
+   <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800"><i class="fas fa-code mr-3 text-purple-600"></i><span data-lang="skills-title">keahlian &amp; expertise</span></h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-500 mx-auto mb-12"></div>
+    <div class="max-w-5xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- Frontend Skills -->
+      <div class="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl shadow-lg hover-scale">
+       <h3 class="text-2xl font-bold mb-6 text-gray-800"><i class="fas fa-palette mr-2 text-purple-600"></i><span data-lang="skill-frontend">frontend development</span></h3>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-html5 text-orange-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">HTML/CSS</span>
+         </div><span class="text-purple-600 font-bold">95%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-purple-600 to-pink-500 h-3 rounded-full" style="--skill-width: 95%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-js text-yellow-500 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">JavaScript</span>
+         </div><span class="text-purple-600 font-bold">93%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-purple-600 to-pink-500 h-3 rounded-full" style="--skill-width: 93%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-react text-blue-500 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">React</span>
+         </div><span class="text-purple-600 font-bold">90%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-purple-600 to-pink-500 h-3 rounded-full" style="--skill-width: 90%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-vuejs text-green-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Vue.js</span>
+         </div><span class="text-purple-600 font-bold">85%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-purple-600 to-pink-500 h-3 rounded-full" style="--skill-width: 85%;"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-css3-alt text-blue-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Tailwind CSS</span>
+         </div><span class="text-purple-600 font-bold">92%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-purple-600 to-pink-500 h-3 rounded-full" style="--skill-width: 92%;"></div>
+        </div>
+       </div>
+      </div><!-- Backend Skills -->
+      <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover-scale">
+       <h3 class="text-2xl font-bold mb-6 text-gray-800"><i class="fas fa-server mr-2 text-blue-600"></i><span data-lang="skill-backend">backend development</span></h3>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-node-js text-green-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Node.js</span>
+         </div><span class="text-blue-600 font-bold">88%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-blue-600 to-purple-500 h-3 rounded-full" style="--skill-width: 88%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-python text-blue-500 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Python</span>
+         </div><span class="text-blue-600 font-bold">85%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-blue-600 to-purple-500 h-3 rounded-full" style="--skill-width: 85%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-php text-indigo-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">PHP</span>
+         </div><span class="text-blue-600 font-bold">82%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-blue-600 to-purple-500 h-3 rounded-full" style="--skill-width: 82%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-laravel text-red-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Laravel</span>
+         </div><span class="text-blue-600 font-bold">80%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-blue-600 to-purple-500 h-3 rounded-full" style="--skill-width: 80%;"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fas fa-database text-orange-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">MongoDB/MySQL</span>
+         </div><span class="text-blue-600 font-bold">87%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-blue-600 to-purple-500 h-3 rounded-full" style="--skill-width: 87%;"></div>
+        </div>
+       </div>
+      </div><!-- Design Skills -->
+      <div class="bg-gradient-to-br from-pink-50 to-white p-8 rounded-2xl shadow-lg hover-scale">
+       <h3 class="text-2xl font-bold mb-6 text-gray-800"><i class="fas fa-pencil-ruler mr-2 text-pink-600"></i><span data-lang="skill-design">ui/ux design</span></h3>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-figma text-purple-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Figma</span>
+         </div><span class="text-pink-600 font-bold">93%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-pink-600 to-purple-500 h-3 rounded-full" style="--skill-width: 93%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fas fa-pen-nib text-pink-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Adobe XD</span>
+         </div><span class="text-pink-600 font-bold">88%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-pink-600 to-purple-500 h-3 rounded-full" style="--skill-width: 88%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fas fa-image text-blue-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Photoshop</span>
+         </div><span class="text-pink-600 font-bold">85%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-pink-600 to-purple-500 h-3 rounded-full" style="--skill-width: 85%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fas fa-bezier-curve text-orange-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Illustrator</span>
+         </div><span class="text-pink-600 font-bold">80%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-pink-600 to-purple-500 h-3 rounded-full" style="--skill-width: 80%;"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-sketch text-yellow-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Sketch</span>
+         </div><span class="text-pink-600 font-bold">78%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-pink-600 to-purple-500 h-3 rounded-full" style="--skill-width: 78%;"></div>
+        </div>
+       </div>
+      </div><!-- Other Skills -->
+      <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-2xl shadow-lg hover-scale">
+       <h3 class="text-2xl font-bold mb-6 text-gray-800"><i class="fas fa-tools mr-2 text-green-600"></i><span data-lang="skill-tools">tools lainnya</span></h3>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-git-alt text-orange-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Git/GitHub</span>
+         </div><span class="text-green-600 font-bold">90%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-green-600 to-blue-500 h-3 rounded-full" style="--skill-width: 90%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-docker text-blue-500 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Docker</span>
+         </div><span class="text-green-600 font-bold">83%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-green-600 to-blue-500 h-3 rounded-full" style="--skill-width: 83%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-aws text-yellow-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">AWS</span>
+         </div><span class="text-green-600 font-bold">78%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-green-600 to-blue-500 h-3 rounded-full" style="--skill-width: 78%;"></div>
+        </div>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fab fa-npm text-red-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">NPM</span>
+         </div><span class="text-green-600 font-bold">88%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-green-600 to-blue-500 h-3 rounded-full" style="--skill-width: 88%;"></div>
+        </div>
+       </div>
+       <div>
+        <div class="flex justify-between items-center mb-2">
+         <div class="flex items-center"><i class="fas fa-tasks text-purple-600 text-2xl mr-3"></i> <span class="font-semibold text-gray-700">Agile/Scrum</span>
+         </div><span class="text-green-600 font-bold">86%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+         <div class="skill-bar bg-gradient-to-r from-green-600 to-blue-500 h-3 rounded-full" style="--skill-width: 86%;"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Projects Section -->
+  <section id="projects" class="py-20 bg-gray-50">
+   <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800"><i class="fas fa-briefcase mr-3 text-purple-600"></i><span data-lang="projects-title">proyek saya</span></h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-500 mx-auto mb-12"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Project 1 -->
+     <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale chakra-card cinematic-glow">
+      <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center"><i class="fas fa-shopping-cart text-white text-6xl"></i>
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2 text-gray-800" data-lang="project1-title">e-commerce platform</h3>
+       <p class="text-gray-600 mb-4" data-lang="project1-desc">platform e-commerce dengan fitur lengkap, payment gateway, dan admin dashboard.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">react</span> <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">node.js</span> <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-semibold">mongodb</span>
+       </div>
+       <div class="flex space-x-3"><button onclick="openProjectModal(1)" class="flex-1 bg-gradient-to-r from-purple-600 to-pink-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 pulse-hover"> <i class="fas fa-eye mr-2"></i><span data-lang="project-view">lihat</span> </button> <button class="flex-1 border-2 border-purple-600 text-purple-600 py-2 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-all duration-300 pulse-hover"> <i class="fab fa-github mr-2"></i><span data-lang="project-code">kode</span> </button>
+       </div>
+      </div>
+     </div><!-- Project 2 -->
+     <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover-scale chakra-card cinematic-glow">
+      <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-400 flex items-center justify-center"><i class="fas fa-mobile-alt text-white text-6xl"></i>
+      </div>
+      <div class="p-6">
+       <h3 class="text-xl font-bold mb-2 text-gray-800" data-lang="project2-title">bot WhatsApp bugs</h3>
+       <p class="text-gray-600 mb-4" data-lang="project2-desc">bot WhatsApp dengan fitur fitur bug dan funcntion bug delay, invisible, dan button.</p>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">react native</span> <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-semibold">firebase</span> <span class="bg-pink-100 text-pink-600 px-3 py-1 rounded-full text-sm font-semibold">redux</span>
+       </div>
+       <div class="flex space-x-3"><button onclick="openProjectModal(2)" class="flex-1 bg-gradient-to-r from-blue-600 to-purple-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 pulse-hover"> <i class="fas fa-eye mr-2"></i><span data-lang="project-view">lihat</span> </button> <button class="flex-1 border-2 border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300 pulse-hover"> <i class="fab fa-github mr-2"></i><span data-lang="project-code">kode</span> </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Certificates Section -->
+  <section id="certificates" class="py-20 bg-white">
+   <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-gray-800"><i class="fas fa-certificate mr-3 text-purple-600"></i><span data-lang="certificates-title">sertifikat &amp; penghargaan</span></h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-500 mx-auto mb-12"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"><!-- Certificate 1 -->
+     <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl shadow-lg hover-scale border-2 border-purple-100 chakra-card cinematic-glow">
+      <div class="flex items-center justify-center mb-4">
+       <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-500 rounded-full flex items-center justify-center"><i class="fas fa-award text-white text-3xl"></i>
+       </div>
+      </div>
+      <h3 class="text-xl font-bold text-center mb-2 text-gray-800" data-lang="cert1-title">Classical Cryptography for Beginner</h3>
+      <p class="text-center text-gray-600 mb-3" data-lang="cert1-org">Dicoding Indonesia</p>
+      <p class="text-center text-sm text-gray-500 mb-4"><span data-lang="cert-issued">diterbitkan</span>: 22 Juli 2025</p><button onclick="openCertModal(1)" class="w-full bg-gradient-to-r from-purple-600 to-pink-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 pulse-hover"> <i class="fas fa-external-link-alt mr-2"></i><span data-lang="cert-view">lihat sertifikat</span> </button>
+     </div><!-- Certificate 2 -->
+     <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl shadow-lg hover-scale border-2 border-blue-100 chakra-card cinematic-glow">
+      <div class="flex items-center justify-center mb-4">
+       <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-500 rounded-full flex items-center justify-center"><i class="fas fa-trophy text-white text-3xl"></i>
+       </div>
+      </div>
+      <h3 class="text-xl font-bold text-center mb-2 text-gray-800" data-lang="cert2-title">Cyber Security Fundamentals</h3>
+      <p class="text-center text-gray-600 mb-3" data-lang="cert2-org">Cisco Networking Academy</p>
+      <p class="text-center text-sm text-gray-500 mb-4"><span data-lang="cert-issued">diterbitkan</span>: 15 Agustus 2025</p><button onclick="openCertModal(2)" class="w-full bg-gradient-to-r from-blue-600 to-purple-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 pulse-hover"> <i class="fas fa-external-link-alt mr-2"></i><span data-lang="cert-view">lihat sertifikat</span> </button>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-purple-600 to-pink-500">
+   <div class="container mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-white"><i class="fas fa-envelope mr-3"></i><span data-lang="contact-title">hubungi saya</span></h2>
+    <div class="w-24 h-1 bg-white mx-auto mb-12"></div>
+    <div class="max-w-4xl mx-auto">
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"><!-- Contact Info -->
+      <div class="space-y-6">
+       <div class="glass p-6 rounded-2xl hover-scale">
+        <div class="flex items-center space-x-4">
+         <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center"><i class="fas fa-envelope text-purple-600 text-2xl"></i>
+         </div>
+         <div>
+          <h3 class="text-white font-semibold text-lg" data-lang="contact-email-label">email</h3>
+          <p id="contact-email" class="text-purple-100">awan.berlian@email.com</p>
+         </div>
+        </div>
+       </div>
+       <div class="glass p-6 rounded-2xl hover-scale">
+        <div class="flex items-center space-x-4">
+         <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center"><i class="fas fa-phone text-purple-600 text-2xl"></i>
+         </div>
+         <div>
+          <h3 class="text-white font-semibold text-lg" data-lang="contact-phone-label">telepon</h3>
+          <p id="contact-phone" class="text-purple-100">+62 812-3456-7890</p>
+         </div>
+        </div>
+       </div>
+       <div class="glass p-6 rounded-2xl hover-scale">
+        <div class="flex items-center space-x-4">
+         <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center"><i class="fas fa-map-marker-alt text-purple-600 text-2xl"></i>
+         </div>
+         <div>
+          <h3 class="text-white font-semibold text-lg" data-lang="contact-location-label">lokasi</h3>
+          <p id="contact-location" class="text-purple-100">jakarta, indonesia</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Contact Form -->
+      <div class="glass p-8 rounded-2xl">
+       <form id="contact-form">
+        <div class="mb-4"><label class="block text-white font-semibold mb-2"> <i class="fas fa-user mr-2"></i><span data-lang="contact-name">nama</span> </label> <input type="text" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-white transition-all duration-300" data-lang-placeholder="contact-name-placeholder" placeholder="nama anda" required>
+        </div>
+        <div class="mb-4"><label class="block text-white font-semibold mb-2"> <i class="fas fa-envelope mr-2"></i><span data-lang="contact-email-label">email</span> </label> <input type="email" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-white transition-all duration-300" data-lang-placeholder="contact-email-placeholder" placeholder="email@anda.com" required>
+        </div>
+        <div class="mb-6"><label class="block text-white font-semibold mb-2"> <i class="fas fa-comment mr-2"></i><span data-lang="contact-message">pesan</span> </label> <textarea rows="4" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-white transition-all duration-300 resize-none" data-lang-placeholder="contact-message-placeholder" placeholder="pesan anda..." required></textarea>
+        </div><button type="submit" class="w-full bg-white text-purple-600 py-3 rounded-lg font-bold hover:bg-purple-100 transition-all duration-300 shadow-lg pulse-hover"> <i class="fas fa-paper-plane mr-2"></i><span data-lang="contact-send">kirim pesan</span> </button>
+       </form>
+      </div>
+     </div><!-- Social Links -->
+     <div class="text-center">
+      <p class="text-white text-lg mb-6 font-semibold" data-lang="contact-connect">terhubung dengan saya</p>
+      <div class="flex justify-center space-x-6"><a href="#" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-purple-600 text-2xl hover:bg-purple-100 transition-all duration-300 pulse-hover"> <i class="fab fa-github"></i> </a> <a href="https://github.com/wanzbrayy" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-purple-600 text-2xl hover:bg-purple-100 transition-all duration-300 pulse-hover"> <i class="fab fa-linkedin"></i> </a> <a href="#" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-purple-600 text-2xl hover:bg-purple-100 transition-all duration-300 pulse-hover"> <i class="fab fa-instagram"></i> </a> <a href="#" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-purple-600 text-2xl hover:bg-purple-100 transition-all duration-300 pulse-hover"> <i class="fab fa-twitter"></i> </a> <a href="#" class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-purple-600 text-2xl hover:bg-purple-100 transition-all duration-300 pulse-hover"> <i class="fab fa-dribbble"></i> </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Project Modal -->
+  <div id="project-modal" class="modal-overlay">
+   <div class="modal-content p-0"><button onclick="closeModal('project-modal')" class="modal-close"> <i class="fas fa-times"></i> </button>
+    <div id="project-modal-content"></div>
+   </div>
+  </div><!-- Certificate Modal -->
+  <div id="cert-modal" class="modal-overlay">
+   <div class="modal-content p-0"><button onclick="closeModal('cert-modal')" class="modal-close"> <i class="fas fa-times"></i> </button>
+    <div id="cert-modal-content"></div>
+   </div>
+  </div><!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8">
+   <div class="container mx-auto px-6 text-center">
+    <p class="text-lg mb-2"><i class="fas fa-gem mr-2 text-purple-400"></i> <span data-lang="footer-made">dibuat dengan</span> <i class="fas fa-heart text-red-500 mx-1"></i> <span data-lang="footer-by">oleh awan berlian</span></p>
+    <p class="text-gray-400" data-lang="footer-rights">© 2025 hak cipta dilindungi</p>
+   </div>
+  </footer>
+  <script>
+    // Initialize Live2D Widget
+    window.addEventListener('load', () => {
+      L2Dwidget.init({
+        "model": {
+          "jsonPath": "https://cdn.jsdelivr.net/gh/evrstr/live2d-widget-models/live2d_evrstr/sagiri/model.json"
+        },
+        "display": {
+          "position": "right",
+          "width": 150,
+          "height": 300,
+          "hOffset": 0,
+          "vOffset": -20
+        },
+        "mobile": {
+          "show": true,
+          "scale": 0.5,
+          "motion": true
+        },
+        "react": {
+          "opacity": 0.9
+        }
+      });
+    });
+
+    // Multi-language translations
+    const translations = {
+      id: {
+        'nav-home': 'beranda',
+        'nav-about': 'tentang',
+        'nav-skills': 'keahlian',
+        'nav-projects': 'proyek',
+        'nav-certificates': 'sertifikat',
+        'nav-contact': 'kontak',
+        'hero-name': 'awan berlian',
+        'hero-title': 'full stack developer & ui/ux designer',
+        'hero-hire': 'hubungi saya',
+        'hero-view': 'lihat karya',
+        'about-title': 'tentang saya',
+        'about-desc': 'saya adalah awan berlian, seorang developer yang passionate dalam menciptakan pengalaman digital dan marketing hingga analisis, dengan keahlian started up development dan desain ui/ux, saya berkomitmen untuk menghadirkan solusi inovatif yang tidak hanya fungsional tetapi juga estetis.',
+        'about-desc2': 'pengalaman saya mencakup pengembangan aplikasi web modern, mobile apps, dan sistem yang kompleks. saya selalu bersemangat untuk belajar teknologi baru dan mengikuti tren terkini dalam industri teknologi dan cyber security.',
+        'about-projects': 'proyek selesai',
+        'about-clients': 'klien puas',
+        'about-awards': 'sertifikat',
+        'skills-title': 'keahlian & expertise',
+        'skill-frontend': 'frontend development',
+        'skill-backend': 'backend development',
+        'skill-design': 'ui/ux design',
+        'skill-tools': 'tools lainnya',
+        'projects-title': 'proyek saya',
+        'project1-title': 'e-commerce platform',
+        'project1-desc': 'platform e-commerce modern dengan fitur lengkap, payment gateway, dan admin dashboard.',
+        'project2-title': 'mobile banking app',
+        'project2-desc': 'aplikasi mobile banking dengan ui/ux modern, secure authentication, dan real-time transactions.',
+        'project-view': 'lihat',
+        'project-code': 'kode',
+        'certificates-title': 'sertifikat & penghargaan',
+        'cert1-title': 'Classical Cryptography for Beginner',
+        'cert1-org': 'Dicoding Indonesia',
+        'cert2-title': 'Cyber Security Fundamentals',
+        'cert2-org': 'Cisco Networking Academy',
+        'cert-view': 'lihat sertifikat',
+        'cert-issued': 'diterbitkan',
+        'contact-title': 'hubungi saya',
+        'contact-email-label': 'email',
+        'contact-phone-label': 'telepon',
+        'contact-location-label': 'lokasi',
+        'contact-name': 'nama',
+        'contact-name-placeholder': 'nama anda',
+        'contact-email-placeholder': 'email@anda.com',
+        'contact-message': 'pesan',
+        'contact-message-placeholder': 'pesan anda...',
+        'contact-send': 'kirim pesan',
+        'contact-connect': 'terhubung dengan saya',
+        'footer-made': 'dibuat dengan',
+        'footer-by': 'oleh awan berlian',
+        'footer-rights': '© 2025 hak cipta dilindungi',
+        'tech-title': 'teknologi favorit',
+        'tech-react': 'library javascript untuk ui interaktif',
+        'tech-figma': 'design tool untuk ui/ux modern',
+        'tech-live2d': 'animasi karakter 2d interaktif',
+        'tech-js': 'bahasa pemrograman web modern'
+      },
+      en: {
+        'nav-home': 'home',
+        'nav-about': 'about',
+        'nav-skills': 'skills',
+        'nav-projects': 'projects',
+        'nav-certificates': 'certificates',
+        'nav-contact': 'contact',
+        'hero-name': 'awan berlian',
+        'hero-title': 'full stack developer & ui/ux designer',
+        'hero-hire': 'hire me',
+        'hero-view': 'view work',
+        'about-title': 'about me',
+        'about-desc': 'i am awan berlian, a passionate developer in creating digital experiences and marketing to analysis, with expertise in started up development and ui/ux design, i am committed to delivering innovative solutions that are not only functional but also aesthetic.',
+        'about-desc2': 'my experience includes developing modern web applications, mobile apps, and complex systems. i am always excited to learn new technologies and follow the latest trends in the technology industry and cyber security.',
+        'about-projects': 'projects completed',
+        'about-clients': 'happy clients',
+        'about-awards': 'certificates',
+        'skills-title': 'skills & expertise',
+        'skill-frontend': 'frontend development',
+        'skill-backend': 'backend development',
+        'skill-design': 'ui/ux design',
+        'skill-tools': 'other tools',
+        'projects-title': 'my projects',
+        'project1-title': 'e-commerce platform',
+        'project1-desc': 'modern e-commerce platform with complete features, payment gateway, and admin dashboard.',
+        'project2-title': 'mobile banking app',
+        'project2-desc': 'mobile banking application with modern ui/ux, secure authentication, and real-time transactions.',
+        'project-view': 'view',
+        'project-code': 'code',
+        'certificates-title': 'certificates & awards',
+        'cert1-title': 'Classical Cryptography for Beginner',
+        'cert1-org': 'Dicoding Indonesia',
+        'cert2-title': 'Cyber Security Fundamentals',
+        'cert2-org': 'Cisco Networking Academy',
+        'cert-view': 'view certificate',
+        'cert-issued': 'issued',
+        'contact-title': 'get in touch',
+        'contact-email-label': 'email',
+        'contact-phone-label': 'phone',
+        'contact-location-label': 'location',
+        'contact-name': 'name',
+        'contact-name-placeholder': 'your name',
+        'contact-email-placeholder': 'your@email.com',
+        'contact-message': 'message',
+        'contact-message-placeholder': 'your message...',
+        'contact-send': 'send message',
+        'contact-connect': 'connect with me',
+        'footer-made': 'made with',
+        'footer-by': 'by awan berlian',
+        'footer-rights': '© 2025 all rights reserved',
+        'tech-title': 'favorite technologies',
+        'tech-react': 'javascript library for interactive ui',
+        'tech-figma': 'design tool for modern ui/ux',
+        'tech-live2d': 'interactive 2d character animation',
+        'tech-js': 'modern web programming language'
+      }
+    };
+
+    let currentLang = 'id';
+
+    function changeLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('preferredLanguage', lang);
+      
+      // Update all elements with data-lang attribute
+      document.querySelectorAll('[data-lang]').forEach(element => {
+        const key = element.getAttribute('data-lang');
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update placeholders
+      document.querySelectorAll('[data-lang-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-lang-placeholder');
+        if (translations[lang][key]) {
+          element.placeholder = translations[lang][key];
+        }
+      });
+      
+      // Update active language button
+      document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`lang-${lang}`).classList.add('active');
+      document.getElementById(`lang-${lang}-mobile`).classList.add('active');
+    }
+
+    // Element SDK Configuration
+    const defaultConfig = {
+      profile_name: "awan berlian",
+      profile_title: "full stack developer & ui/ux designer",
+      about_text: "saya adalah awan berlian, seorang developer yang passionate dalam menciptakan pengalaman digital dan marketing hingga analisis, dengan keahlian started up development dan desain ui/ux, saya berkomitmen untuk menghadirkan solusi inovatif yang tidak hanya fungsional tetapi juga estetis.",
+      email_address: "awan.berlian@email.com",
+      phone_number: "+62 812-3456-7890",
+      location_text: "jakarta, indonesia"
+    };
+
+    async function onConfigChange(config) {
+      const heroName = document.getElementById('hero-name');
+      const heroTitle = document.getElementById('hero-title');
+      const aboutDescription = document.getElementById('about-description');
+      const contactEmail = document.getElementById('contact-email');
+      const contactPhone = document.getElementById('contact-phone');
+      const contactLocation = document.getElementById('contact-location');
+
+      if (heroName) heroName.textContent = config.profile_name || defaultConfig.profile_name;
+      if (heroTitle) heroTitle.textContent = config.profile_title || defaultConfig.profile_title;
+      if (aboutDescription) aboutDescription.textContent = config.about_text || defaultConfig.about_text;
+      if (contactEmail) contactEmail.textContent = config.email_address || defaultConfig.email_address;
+      if (contactPhone) contactPhone.textContent = config.phone_number || defaultConfig.phone_number;
+      if (contactLocation) contactLocation.textContent = config.location_text || defaultConfig.location_text;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["profile_name", config.profile_name || defaultConfig.profile_name],
+        ["profile_title", config.profile_title || defaultConfig.profile_title],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["email_address", config.email_address || defaultConfig.email_address],
+        ["phone_number", config.phone_number || defaultConfig.phone_number],
+        ["location_text", config.location_text || defaultConfig.location_text]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+      } else {
+        navbar.classList.remove('navbar-scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Create success message
+      const successMessage = document.createElement('div');
+      successMessage.className = 'fixed top-20 right-6 bg-white text-purple-600 px-6 py-4 rounded-lg shadow-2xl z-50 fade-in-up';
+      successMessage.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Message sent successfully!';
+      document.body.appendChild(successMessage);
+      
+      // Remove message after 3 seconds
+      setTimeout(() => {
+        successMessage.remove();
+      }, 3000);
+      
+      // Reset form
+      contactForm.reset();
+    });
+
+    // Language switcher event listeners
+    document.getElementById('lang-id').addEventListener('click', () => changeLanguage('id'));
+    document.getElementById('lang-en').addEventListener('click', () => changeLanguage('en'));
+    document.getElementById('lang-id-mobile').addEventListener('click', () => changeLanguage('id'));
+    document.getElementById('lang-en-mobile').addEventListener('click', () => changeLanguage('en'));
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const body = document.body;
+    
+    function toggleDarkMode() {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      
+      // Update icon
+      const icon = isDark ? 'fa-sun' : 'fa-moon';
+      const oldIcon = isDark ? 'fa-moon' : 'fa-sun';
+      
+      document.querySelectorAll('#theme-toggle i, #theme-toggle-mobile i').forEach(i => {
+        i.classList.remove(oldIcon);
+        i.classList.add(icon);
+      });
+    }
+    
+    themeToggle.addEventListener('click', toggleDarkMode);
+    themeToggleMobile.addEventListener('click', toggleDarkMode);
+    
+    // Load saved theme preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      body.classList.add('dark-mode');
+      document.querySelectorAll('#theme-toggle i, #theme-toggle-mobile i').forEach(i => {
+        i.classList.remove('fa-moon');
+        i.classList.add('fa-sun');
+      });
+    }
+    
+    // Load saved language preference
+    const savedLang = localStorage.getItem('preferredLanguage') || 'id';
+    if (savedLang !== 'id') {
+      changeLanguage(savedLang);
+    }
+
+    // Project Modal Data
+    const projectData = {
+      1: {
+        title: 'e-commerce platform',
+        desc: 'platform e-commerce modern dengan fitur lengkap, payment gateway, dan admin dashboard.',
+        gradient: 'from-purple-400 to-pink-400',
+        icon: 'fa-shopping-cart',
+        image: 'https://files.catbox.moe/swqoet.jpg',
+        features: ['responsive design', 'payment gateway integration', 'admin dashboard', 'real-time inventory', 'customer reviews', 'order domain']
+      },
+      2: {
+        title: 'bot WhatsApp',
+        desc: 'bot WhatsApp dengan fitur fitur bug dan funcntion bug delay, invisible, dan button',
+        gradient: 'from-blue-400 to-purple-400',
+        icon: 'fa-mobile-alt',
+        image: 'https://files.catbox.moe/tv2rbb.jpg',
+        features: ['bug', invisible','delay']
+      }
+    };
+
+    // Certificate Modal Data
+    const certData = {
+      1: { 
+        title: 'Classical Cryptography for Beginner', 
+        org: 'Cyber Academy Indonesia', 
+        date: '22 Juli 2025', 
+        gradient: 'from-purple-600 to-pink-500',
+        certId: 'CCFB01107253108',
+        image: 'https://files.catbox.moe/g35owf.jpg'
+      },
+      2: { 
+        title: 'Cyber Security Fundamentals', 
+        org: 'Cisco Networking Academy', 
+        date: '15 Agustus 2025', 
+        gradient: 'from-blue-600 to-purple-500',
+        certId: 'CSF2024081500',
+        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop'
+      }
+    };
+
+    function openProjectModal(id) {
+      const project = projectData[id];
+      const modal = document.getElementById('project-modal');
+      const content = document.getElementById('project-modal-content');
+      
+      content.innerHTML = `
+        <div class="bg-gradient-to-br ${project.gradient} p-12 text-white">
+          <div class="max-w-4xl mx-auto text-center">
+            <i class="fas ${project.icon} text-8xl mb-6 neon-text"></i>
+            <h2 class="text-4xl font-bold mb-4">${project.title}</h2>
+            <p class="text-xl opacity-90">${project.desc}</p>
+          </div>
+        </div>
+        
+        <div class="p-8 max-w-4xl mx-auto">
+          <h3 class="text-2xl font-bold mb-6 text-gray-800">
+            <i class="fas fa-star mr-2 text-yellow-500"></i>fitur utama
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            ${project.features.map(feature => `
+              <div class="flex items-center space-x-3 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
+                <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                <span class="text-gray-700 font-medium">${feature}</span>
+              </div>
+            `).join('')}
+          </div>
+          
+          <div class="bg-gradient-to-br ${project.gradient} p-8 rounded-2xl text-white text-center">
+            <img src="${project.image}" alt="${project.title}" class="w-full h-auto rounded-xl mb-4 shadow-2xl" onerror="this.style.display='none';">
+            <p class="text-lg opacity-90">project screenshot preview</p>
+          </div>
+        </div>
+      `;
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openCertModal(id) {
+      const cert = certData[id];
+      const modal = document.getElementById('cert-modal');
+      const content = document.getElementById('cert-modal-content');
+      
+      content.innerHTML = `
+        <div class="bg-gradient-to-br ${cert.gradient} p-12">
+          <div class="max-w-3xl mx-auto bg-white rounded-2xl p-12 shadow-2xl cinematic-glow">
+            
+            <div class="mb-8">
+              <img src="${cert.image}" alt="${cert.title}" class="w-full h-64 object-cover rounded-xl shadow-lg mb-6" onerror="this.style.display='none';">
+            </div>
+            
+            <div class="text-center mb-8">
+              <div class="inline-block p-4 bg-gradient-to-br ${cert.gradient} rounded-full mb-6">
+                <i class="fas fa-certificate text-white text-6xl"></i>
+              </div>
+              <h2 class="text-3xl font-bold text-gray-800 mb-2">certificate of completion</h2>
+              <div class="w-24 h-1 bg-gradient-to-r ${cert.gradient} mx-auto mb-6"></div>
+            </div>
+            
+            <div class="text-center mb-8">
+              <p class="text-gray-600 text-lg mb-4">this certifies that</p>
+              <h3 class="text-4xl font-bold text-gray-800 mb-6">awan berlian</h3>
+              <p class="text-gray-600 text-lg mb-2">has successfully completed</p>
+              <h4 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${cert.gradient} mb-6">
+                ${cert.title}
+              </h4>
+            </div>
+            
+            <div class="flex justify-between items-center border-t-2 border-gray-200 pt-6">
+              <div class="text-center">
+                <p class="text-gray-500 text-sm mb-1">issued by</p>
+                <p class="font-bold text-gray-800">${cert.org}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-gray-500 text-sm mb-1">date</p>
+                <p class="font-bold text-gray-800">${cert.date}</p>
+              </div>
+              <div class="text-center">
+                <p class="text-gray-500 text-sm mb-1">credential id</p>
+                <p class="font-bold text-gray-800">${cert.certId}</p>
+              </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+              <div class="inline-block p-4 border-4 border-gray-300 rounded-lg">
+                <i class="fas fa-qrcode text-6xl text-gray-400"></i>
+              </div>
+              <p class="text-gray-500 text-sm mt-2">scan untuk verifikasi</p>
+            </div>
+            
+          </div>
+        </div>
+      `;
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('project-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal('project-modal');
+    });
+    
+    document.getElementById('cert-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal('cert-modal');
+    });
+
+    // Particle effect on hero section
+    function createParticle() {
+      const hero = document.getElementById('home');
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      const size = Math.random() * 5 + 2;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.background = 'rgba(255, 255, 255, 0.5)';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.bottom = '0';
+      particle.style.animation = `float-particle ${Math.random() * 3 + 2}s ease-in-out`;
+      
+      hero.appendChild(particle);
+      
+      setTimeout(() => {
+        particle.remove();
+      }, 5000);
+    }
+
+    setInterval(createParticle, 300);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-up');
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d1a80bd24a4ac2',t:'MTc2MjkwNDY1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
